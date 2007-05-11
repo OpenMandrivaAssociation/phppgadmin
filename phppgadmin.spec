@@ -15,6 +15,7 @@ Requires:       apache-mod_php php-pgsql php-gettext
 BuildRequires:	recode
 BuildRequires:	file
 BuildRequires:	ImageMagick
+BuildRequires:  libjasper
 BuildRequires:	apache-base >= 2.0.54
 BuildArch:	noarch
 Requires(post):	ccp >= 0.4.0
