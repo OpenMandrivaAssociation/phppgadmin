@@ -1,25 +1,28 @@
 %define rname phpPgAdmin
 
-Summary:	PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
-Name:		phppgadmin
-Version:	4.1.1
-Release:	%mkrel 1
-License:	GPL
-Group:		System/Servers
-URL:		http://sourceforge.net/projects/phppgadmin
-Source0:	http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
-Patch0:		phpPgAdmin-4.1.1-mdv_conf.diff
-Requires:	postgresql
-Requires(pre):  apache-mod_php php-pgsql php-gettext
-Requires:       apache-mod_php php-pgsql php-gettext
-BuildRequires:	recode
-BuildRequires:	file
-BuildRequires:	ImageMagick
+Name:           phppgadmin
+Version:        4.1.2
+Release:        %mkrel 1
+Summary:        PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
+License:        GPL
+Group:          System/Servers
+URL:            http://sourceforge.net/projects/phppgadmin
+Source0:        http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
+Patch0:         phpPgAdmin-4.1.1-mdv_conf.diff
+Requires:       postgresql
+Requires(pre):  apache-mod_php
+Requires(pre):  php-pgsql
+Requires(pre):  php-gettext
+Requires(post): ccp >= 0.4.0
+Requires(post): rpm-helper
+Requires(postun): rpm-helper
+BuildRequires:  apache-base >= 2.0.54
+BuildRequires:  file
+BuildRequires:  ImageMagick
 BuildRequires:  libjasper
-BuildRequires:	apache-base >= 2.0.54
-BuildArch:	noarch
-Requires(post):	ccp >= 0.4.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-buildroot
+BuildRequires:  recode
+BuildArch:      noarch
+BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 phpPgAdmin is phpMyAdmin (for MySQL) ported to PostgreSQL.
