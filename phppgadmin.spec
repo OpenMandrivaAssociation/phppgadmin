@@ -1,7 +1,7 @@
 %define rname phpPgAdmin
 
 Name:           phppgadmin
-Version:        4.1.2
+Version:        4.1.3
 Release:        %mkrel 1
 Summary:        PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
 License:        GPL
@@ -110,17 +110,6 @@ convert images/themes/default/title.png -resize 16x16  %{buildroot}%{_miconsdir}
 convert images/themes/default/title.png -resize 32x32  %{buildroot}%{_iconsdir}/%{name}.png
 convert images/themes/default/title.png -resize 48x48  %{buildroot}%{_liconsdir}/%{name}.png
 
-# install menu entry.
-install -d %{buildroot}%{_menudir}
-cat > %{buildroot}%{_menudir}/%{name} << EOF
-?package(%{name}): needs=X11 \
-section="More Applications/Databases" \
-title="phpPgAdmin" \
-longtitle="phpPgAdmin is a web administration GUI for PostgreSQL." \
-command="%{_bindir}/www-browser http://localhost/%{name}/" \
-icon="%{name}.png" \
-xdg=true
-EOF
 
 # XDG menu
 install -d %{buildroot}%{_datadir}/applications
@@ -154,10 +143,7 @@ ccp --delete --ifexists --set "NoOrphans" --ignoreopt config_version --oldfile %
 %dir %attr(0755,root,root) %{_sysconfdir}/%{name}
 %attr(0640,apache,root) %config(noreplace) %{_sysconfdir}/%{name}/config.inc.php
 /var/www/%{name}
-%{_menudir}/%{name}
 %{_iconsdir}/%{name}.png
 %{_miconsdir}/%{name}.png
 %{_liconsdir}/%{name}.png
 %{_datadir}/applications/*.desktop
-
-
