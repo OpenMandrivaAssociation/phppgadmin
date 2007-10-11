@@ -1,9 +1,9 @@
 %define rname phpPgAdmin
 
+Summary:        PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
 Name:           phppgadmin
 Version:        4.1.3
-Release:        %mkrel 1
-Summary:        PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
+Release:        %mkrel 2
 License:        GPL
 Group:          System/Servers
 URL:            http://sourceforge.net/projects/phppgadmin
@@ -117,7 +117,7 @@ cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
 [Desktop Entry]
 Name=phpPgAdmin
 Comment=phpPgAdmin is a web administration GUI for PostgreSQL.
-Exec="%{_bindir}/www-browser http://localhost/%{name}/"
+Exec=%{_bindir}/www-browser http://localhost/%{name}/
 Icon=%{name}
 Terminal=false
 Type=Application
