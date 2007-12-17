@@ -22,7 +22,6 @@ BuildRequires:  ImageMagick
 BuildRequires:  libjasper
 BuildRequires:  recode
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
 
 %description
 phpPgAdmin is phpMyAdmin (for MySQL) ported to PostgreSQL.
