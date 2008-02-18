@@ -1,6 +1,6 @@
 %define rname phpPgAdmin
 
-Summary:        PhpPgAdmin is intended to handle the adminstration of PostgreSQL over the web
+Summary:        Intended to handle the adminstration of PostgreSQL over the web
 Name:           phppgadmin
 Version:        4.1.3
 Release:        %mkrel 2
