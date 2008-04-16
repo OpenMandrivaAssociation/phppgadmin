@@ -2,8 +2,8 @@
 
 Summary:        Intended to handle the adminstration of PostgreSQL over the web
 Name:           phppgadmin
-Version:        4.1.3
-Release:        %mkrel 3
+Version:        4.2
+Release:        %mkrel 1
 License:        GPL
 Group:          System/Servers
 URL:            http://sourceforge.net/projects/phppgadmin
