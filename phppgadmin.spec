@@ -127,11 +127,15 @@ EOF
 %post
 ccp --delete --ifexists --set "NoOrphans" --ignoreopt config_version --oldfile %{_sysconfdir}/%{name}/config.inc.php --newfile %{_sysconfdir}/%{name}/config.inc.php.rpmnew
 %_post_webapp
+%if %mdkversion < 200900
 %update_menus
+%endif
 
 %postun
 %_postun_webapp
+%if %mdkversion < 200900
 %clean_menus
+%endif
 
 %clean
 [ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
