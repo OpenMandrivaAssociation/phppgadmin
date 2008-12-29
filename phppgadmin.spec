@@ -3,13 +3,12 @@
 Summary:        Intended to handle the adminstration of PostgreSQL over the web
 Name:           phppgadmin
 Version:        4.2.1
-Release:        %mkrel 1
+Release:        %mkrel 2
 License:        GPL
 Group:          System/Servers
 URL:            http://sourceforge.net/projects/phppgadmin
 Source0:        http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
 Patch0:         phpPgAdmin-4.1.1-mdv_conf.diff
-Requires:       postgresql
 Requires(pre):  apache-mod_php
 Requires(pre):  php-pgsql
 Requires(pre):  php-gettext
@@ -81,9 +80,9 @@ Alias /%{name} /var/www/%{name}
     Allow from All
 </Directory>
 
-# Uncomment the following lines to force a redirect to a working 
+# Uncomment the following lines to force a redirect to a working
 # SSL aware apache server. This serves as an example.
-# 
+#
 #<IfModule mod_ssl.c>
 #    <LocationMatch /%{name}>
 #        Options FollowSymLinks
