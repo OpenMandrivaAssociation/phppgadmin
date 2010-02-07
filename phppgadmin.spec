@@ -3,7 +3,7 @@
 Summary:        Intended to handle the adminstration of PostgreSQL over the web
 Name:           phppgadmin
 Version:        4.2.2
-Release:        %mkrel 2
+Release:        %mkrel 4
 License:        GPL
 Group:          System/Servers
 URL:            http://sourceforge.net/projects/phppgadmin
@@ -30,7 +30,6 @@ utility. You can use it to  create and maintain multiple databases
 and even multiple servers.
 
 %prep
-
 %setup -q -n %{rname}-%{version}
 %patch0 -p0
 
@@ -72,8 +71,10 @@ cat > %{buildroot}%{webappconfdir}/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
-    Order allow,deny
-    Allow from All
+    Order deny,allow
+    Deny from all
+    Allow from 127.0.0.1
+    ErrorDocument 403 "Access denied per %{webappconfdir}/%{name}.conf"
 </Directory>
 EOF
 
