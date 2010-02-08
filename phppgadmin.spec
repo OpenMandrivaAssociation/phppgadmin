@@ -1,27 +1,29 @@
 %define rname phpPgAdmin
 
-Summary:        Intended to handle the adminstration of PostgreSQL over the web
-Name:           phppgadmin
-Version:        4.2.2
-Release:        %mkrel 4
-License:        GPL
-Group:          System/Servers
-URL:            http://sourceforge.net/projects/phppgadmin
-Source0:        http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
-Patch0:         phpPgAdmin-4.1.1-mdv_conf.diff
-Requires:  apache-mod_php
-Requires:  php-pgsql
-Requires:  php-gettext
+Summary:	PostgreSQL database adminstration over the web interface
+Name:		phppgadmin
+Version:	4.2.2
+Release:	%mkrel 4
+License:	GPLv2+
+Group:		System/Servers
+URL:		http://sourceforge.net/projects/phppgadmin
+Source0:	http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
+Patch0:		phpPgAdmin-4.1.1-mdv_conf.diff
+Requires:	apache-mod_php
+Requires:	php-pgsql
+Requires:	php-gettext
 Requires(post): ccp >= 0.4.0
+
 %if %mdkversion < 201010
-Requires(post):   rpm-helper
+Requires(post):	rpm-helper
 Requires(postun):   rpm-helper
 %endif
-BuildRequires:  ImageMagick
-BuildRequires:  libjasper
-BuildRequires:  recode
-BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root
+
+BuildRequires:	ImageMagick
+BuildRequires:	libjasper
+BuildRequires:	recode
+BuildArch:	noarch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 phpPgAdmin is phpMyAdmin (for MySQL) ported to PostgreSQL.
@@ -35,7 +37,7 @@ and even multiple servers.
 
 # clean up CVS stuff
 for i in `find . -type d -name CVS` `find . -type f -name .cvs\*` `find . -type f -name .#\*`; do
-    if [ -e "$i" ]; then rm -r $i; fi >&/dev/null
+	if [ -e "$i" ]; then rm -r $i; fi >&/dev/null
 done
 
 %build
@@ -56,25 +58,25 @@ rm -rf %{buildroot}/var/www/%{name}/conf
 
 # generate UTF-8 files
 pushd lang
-    make DESTDIR=./recoded
+	make DESTDIR=./recoded
 popd
 install -m0644 lang/recoded/*.php  %{buildroot}/var/www/%{name}/lang/recoded/
 
 # cleanup
 pushd %{buildroot}/var/www/%{name}
-    rm -rf sql
-    rm -f CREDITS DEVELOPERS FAQ HISTORY INSTALL LICENSE TODO TRANSLATORS
-    rm -f lang/Makefile lang/convert.awk lang/php2po lang/po2php lang/synch lang/langcheck
+	rm -rf sql
+	rm -f CREDITS DEVELOPERS FAQ HISTORY INSTALL LICENSE TODO TRANSLATORS
+	rm -f lang/Makefile lang/convert.awk lang/php2po lang/po2php lang/synch lang/langcheck
 popd
 
 cat > %{buildroot}%{webappconfdir}/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
-    Order deny,allow
-    Deny from all
-    Allow from 127.0.0.1
-    ErrorDocument 403 "Access denied per %{webappconfdir}/%{name}.conf"
+	Order deny,allow
+	Deny from all
+	Allow from 127.0.0.1
+	ErrorDocument 403 "Access denied per %{webappconfdir}/%{name}.conf"
 </Directory>
 EOF
 
@@ -109,8 +111,8 @@ EOF
 
 %post
 ccp --delete --ifexists --set "NoOrphans" --ignoreopt config_version \
-    --oldfile %{_sysconfdir}/%{name}/config.inc.php \
-    --newfile %{_sysconfdir}/%{name}/config.inc.php.rpmnew
+	--oldfile %{_sysconfdir}/%{name}/config.inc.php \
+	--newfile %{_sysconfdir}/%{name}/config.inc.php.rpmnew
 %if %mdkversion < 201010
 %_post_webapp
 %endif
