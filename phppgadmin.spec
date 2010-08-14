@@ -2,8 +2,8 @@
 
 Summary:	PostgreSQL database adminstration over the web interface
 Name:		phppgadmin
-Version:	4.2.2
-Release:	%mkrel 4
+Version:	4.2.3
+Release:	%mkrel 1
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://sourceforge.net/projects/phppgadmin
