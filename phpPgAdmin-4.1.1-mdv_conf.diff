@@ -1,0 +1,18 @@
+--- libraries/lib.inc.php	2005-11-23 05:31:10.000000000 +0100
++++ libraries/lib.inc.php.oden	2006-04-17 11:56:20.000000000 +0200
+@@ -26,12 +26,12 @@
+ 		exit(sprintf('Version of PHP not supported. Please upgrade to version %s or later.', $phpMinVer));
+ 
+ 	// Check to see if the configuration file exists, if not, explain
+-	if (file_exists('conf/config.inc.php')) {
++	if (file_exists('/etc/phppgadmin/config.inc.php')) {
+ 		$conf = array();
+-		include('./conf/config.inc.php');
++		include('/etc/phppgadmin/config.inc.php');
+ 	}
+ 	else {
+-		echo 'Configuration error: Copy conf/config.inc.php-dist to conf/config.inc.php and edit appropriately.';
++		echo 'Configuration error: Copy conf/config.inc.php-dist to /etc/phppgadmin/config.inc.php and edit appropriately.';
+ 		exit;
+ 	}
+ 
