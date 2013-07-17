@@ -3,7 +3,7 @@
 Summary:	PostgreSQL database adminstration over the web interface
 Name:		phppgadmin
 Version:	4.2.3
-Release:	2
+Release:	3
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://sourceforge.net/projects/phppgadmin
@@ -70,9 +70,7 @@ cat > %{buildroot}%{webappconfdir}/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
-	Order deny,allow
-	Deny from all
-	Allow from 127.0.0.1
+	Require host 127.0.0.1
 	ErrorDocument 403 "Access denied per %{webappconfdir}/%{name}.conf"
 </Directory>
 EOF
