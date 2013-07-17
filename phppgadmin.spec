@@ -3,7 +3,7 @@
 Summary:	PostgreSQL database adminstration over the web interface
 Name:		phppgadmin
 Version:	4.2.3
-Release:	4
+Release:	5
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://sourceforge.net/projects/phppgadmin
@@ -44,7 +44,7 @@ done
 %install
 export DONT_RELINK=1
 
-install -d %{buildroot}%{webappconfdir}
+install -d %{buildroot}%{_webappconfdir}
 install -d %{buildroot}%{_sysconfdir}/%{name}
 install -d %{buildroot}/var/www/%{name}
 
@@ -66,12 +66,12 @@ pushd %{buildroot}/var/www/%{name}
 	rm -f lang/Makefile lang/convert.awk lang/php2po lang/po2php lang/synch lang/langcheck
 popd
 
-cat > %{buildroot}%{webappconfdir}/%{name}.conf << EOF
+cat > %{buildroot}%{_webappconfdir}/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
 	Require host localhost.localdomain
-	ErrorDocument 403 "Access denied per %{webappconfdir}/%{name}.conf"
+	ErrorDocument 403 "Access denied per %{_webappconfdir}/%{name}.conf"
 </Directory>
 EOF
 
@@ -111,7 +111,7 @@ ccp --delete --ifexists --set "NoOrphans" --ignoreopt config_version \
 
 %files
 %doc CREDITS DEVELOPERS FAQ HISTORY INSTALL LICENSE TODO TRANSLATORS sql/reports-pgsql.sql
-%config(noreplace) %{webappconfdir}/%{name}.conf
+%config(noreplace) %{_webappconfdir}/%{name}.conf
 %dir %{_sysconfdir}/%{name}
 %attr(0640,apache,root) %config(noreplace) %{_sysconfdir}/%{name}/config.inc.php
 /var/www/%{name}
