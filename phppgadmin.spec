@@ -20,7 +20,7 @@ Requires(postun):   rpm-helper
 %endif
 
 BuildRequires:	imagemagick
-BuildRequires:	libjasper
+BuildRequires:	libjasper.so.1
 BuildRequires:	recode
 BuildArch:	noarch
 
