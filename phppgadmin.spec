@@ -3,7 +3,7 @@
 Summary:	PostgreSQL database adminstration over the web interface
 Name:		phppgadmin
 Version:	4.2.3
-Release:	5
+Release:	6
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://sourceforge.net/projects/phppgadmin
@@ -13,12 +13,6 @@ Requires:	apache-mod_php
 Requires:	php-pgsql
 Requires:	php-gettext
 Requires(post): ccp >= 0.4.0
-
-%if %mdkversion < 201010
-Requires(post):	rpm-helper
-Requires(postun):   rpm-helper
-%endif
-
 BuildRequires:	imagemagick
 BuildRequires:	pkgconfig(jasper)
 BuildRequires:	recode
@@ -70,7 +64,7 @@ cat > %{buildroot}%{_webappconfdir}/%{name}.conf << EOF
 Alias /%{name} /var/www/%{name}
 
 <Directory /var/www/%{name}>
-	Require host localhost.localdomain
+	Require local granted
 	ErrorDocument 403 "Access denied per %{_webappconfdir}/%{name}.conf"
 </Directory>
 EOF
