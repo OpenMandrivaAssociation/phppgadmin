@@ -1,2 +1,4 @@
+removed_sources:
+  phpPgAdmin-4.2.3.tar.bz2: 28ecb4073d432b80592bc53b0c86fa9ef8459428
 sources:
-  "phpPgAdmin-4.2.3.tar.bz2": 28ecb4073d432b80592bc53b0c86fa9ef8459428
+  phpPgAdmin-5.1.tar.bz2: d7a1f42f79370e1006dcdf558ab888275a70c3c9
