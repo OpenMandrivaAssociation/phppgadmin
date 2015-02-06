@@ -3,7 +3,7 @@
 Summary:	PostgreSQL database adminstration over the web interface
 Name:		phppgadmin
 Version:	5.1
-Release:	1
+Release:	2
 License:	GPLv2+
 Group:		System/Servers
 URL:		http://sourceforge.net/projects/phppgadmin
