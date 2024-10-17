@@ -6,7 +6,7 @@ Version:	5.1
 Release:	2
 License:	GPLv2+
 Group:		System/Servers
-URL:		http://sourceforge.net/projects/phppgadmin
+URL:		https://sourceforge.net/projects/phppgadmin
 Source0:	http://prdownloads.sourceforge.net/phppgadmin/%{rname}-%{version}.tar.bz2
 Patch0:		phpPgAdmin-4.1.1-mdv_conf.diff
 Requires:	apache-mod_php
